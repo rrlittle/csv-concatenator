@@ -24,7 +24,7 @@ ofname = args.outfile
 working_dir = args.working_dir
 
 #
-#   MOVE TO WORKING DIR
+#   MOVE TO WORKING  DIR 
 #       we need to go to the correct place to process the stuff
 
 try:
