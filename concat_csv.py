@@ -97,7 +97,6 @@ try:
                     print('writing ', line)
                     wo.writerow(line)
 
-                r.close() # close the reader
 
                 # ======================
                 #
