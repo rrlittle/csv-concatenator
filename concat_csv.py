@@ -8,18 +8,20 @@ import time
 #
 #   ARGS 
 #       Need the file pattern 
-
+print("Executing the program to concatenate csv assuming all the csv's mentioned in the patter has same schema.")
 ap = argparse.ArgumentParser()
-ap.add_argument("-w",'--working_dir',required=True)
+ap.add_argument('-w','--working_dir',required=True)
 ap.add_argument('-o', '--outfile', required=True)
-ap.add_argument("-p",'--file_pattern', required=True)
+ap.add_argument('-p','--file_pattern', required=True)
 
-args = vars(ap.parse_args())
-print(args)
+print("Arguments parsing done")
+args = ap.parse_args()
 
-file_pattern = args['file_pattern']
-ofname = args['outfile']
-working_dir= args['working_dir']
+print("arguments are parsed")
+
+file_pattern = args.file_pattern
+ofname = args.outfile
+working_dir = args.working_dir
 
 #
 #   MOVE TO WORKING DIR
@@ -39,8 +41,8 @@ except Exception as e:
 #   LOGS
 #       Redirect stdout to the logfile. as this is usually going to be run by a scheduled task. 
 
-#logname = time.asctime().replace(' ','_').replace(':',".") # name it after the current time
-#sys.stdout = open('diag/concat_{}.txt'.format(logname), 'w')   # save the log
+logname = time.asctime().replace(' ','_').replace(':',".") # name it after the current time
+sys.stdout = open('diag/concat_{}.txt'.format(logname), 'w')   # save the log
 
 #
 #   CONCATENATE
