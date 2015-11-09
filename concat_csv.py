@@ -2,7 +2,7 @@ from glob import glob
 import argparse
 import csv
 import sys
-from os import chdir, getcwd,listdir
+from os import chdir, getcwd,listdir, path
 from shutil import move
 import time
 
@@ -105,7 +105,7 @@ try:
 
                 try:
                     # move the file to the saved dir
-                    move(fname, os.path.join('saved', fname))
+                    move(fname, path.join('saved', fname))
                 except Exception as e:
                     # if it failed for some reason. add it to the summary log statement
                     files_with_errs.append((fname, e))
@@ -124,9 +124,9 @@ except Exception as e:
 
 if len(files_successfull) > 0:
     print('\n\n =============================\n\tFILES SAVED SUCCESSFULLY:')
-    print('\n'.join(str(files_successfull)))
+    print('\n'.join(files_successfull))
 
 if len(files_with_errs) > 0:
     print('\n\n =============================\n\tFILES with errors. Not saved:')
-    print('\n'.join(str(files_with_errs)))
+    print('\n'.join(files_with_errs))
 
