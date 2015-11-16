@@ -88,13 +88,13 @@ try:
         # process each file
         for fname in files:
             try:
-                print('\n\n====== > Processing', fname)
+                print('====== > Processing', fname)
                 r = csv.reader(open(fname),delimiter='\t')
                 print('skipping the header')
                 r.__next__() # read in the header
                     
                 for line in r:
-                    print('writing ', line)
+                    print('\twriting ', line)
                     wo.writerow(line)
 
 
@@ -109,12 +109,12 @@ try:
                 except Exception as e:
                     # if it failed for some reason. add it to the summary log statement
                     files_with_errs.append((fname, e))
-                else:
-                    # if it got through completely. save the filename to successful
-                    files_successfull.append(fname)
-
-            except Exception as e: # if there was an error processinf the file.
+                
+            except Exception as e: # if there was an error processing the file.
                 files_with_errs.append((fname, e))
+                
+            else: # if it got through completely. save the filename to successful
+                    files_successfull.append(fname)
 
 
 
